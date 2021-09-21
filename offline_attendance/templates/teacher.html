@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body onload="check()">
+    {% if user.is_authenticated %}
+        {% if request.session.user == 'teacher' %}
+        <center>
+            <div class="container mt-3">
+                <h1>Welcome {{user}}</h1>
+                {% if request.session.start_btn == 1 %}
+                <form action="start_receiver" id = 'start_server' method="post"> {% csrf_token %}
+                    <button type="submit" class="btn btn-info btn-md" id = 'start_btn'  onclick="disable_stop_download()"><h1>Start</h1></button>
+                </form>
+                {% endif %}
+                {% if request.session.error == "" and request.session.pin != "" %}
+                <h3 id='class_pin'>Class Pin = {{request.session.pin}}</h3>
+                {% endif %}
+                {% if request.session.stop_btn == 1 and request.session.pin != "" %}
+                <form action="stop_server" id = 'stop_server' method="post"> {% csrf_token %}
+                    <button type="submit" class="btn btn-info btn-md" id = 'stop_btn' ><h1>Stop</h1></button>
+                </form>
+                {% endif %}
+                <h3>{{request.session.error}}</h3>
+                {% if request.session.download_btn == 1 and request.session.error != "no student entry!" %}
+                <form action="download_file" method="post" id = "download_file_form"> {% csrf_token %}
+                    <button type="submit" class="btn btn-info btn-md" id = 'download_btn'  ><h1>Download</h1></button>
+                    <button type="button" class="btn btn-info btn-md" id = 'reload_home' onclick="location.href='index'" ><h1>Refresh</h1></button>
+                </form>
+                {% endif %}
+            </div>
+        </center>
+    
+        {% endif %}
+    {% endif %}
+</body>
+
+<script>
+
+    function reload_home()
+    {
+        var targURL = "index";
+        window.location.href = targURL;
+    }
+    function check()
+    {
+        if("{{request.session.stop_btn}}"==1 && "{{request.session.pin}}" != "")
+        {
+            document.getElementById("start_btn").disabled=true;
+        }
+    }
+    
+    </script>
+{% endblock body %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body>
+    <form action="/download_file" method="post"> {% csrf_token %}
+    <button type="submit" onclick="location.href='{{download_link}}'" ><h1>Download</h1></button>
+</form>
+</body>
+{% endblock body %}

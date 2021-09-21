@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body>
+    {% if user.is_authenticated %}
+
+    <center>
+        <h1>Welcome {{user}}</h1>
+        {% if user.username == "admin" %}
+        <form action="reset_list" method="post"> {% csrf_token %}
+            <button class="btn btn-info btn-md" type="submit">Reset</button>
+        </form>
+        {% endif %}
+    </center>
+    {% else %}
+     <center><h1>Please Register or Login First!</h1></center>
+    {% endif %}
+</body>
+
+{% endblock body %}

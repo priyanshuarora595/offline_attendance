@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body >
+    {% if user.is_authenticated %}
+        {% if request.session.user == 'student' %}
+            {% if status > 0 %}
+            <center><h1>Offline Attendance</h1>
+
+            <form action="/mark_att" method="post"> {% csrf_token %}
+                Enter Class Pin : <input type="number" id="class_pin_id" name = "class_pin_name" min="100000" max="999999">
+                <!-- Enter Your  Name : <input type="text" id="std_name" name = "std_name"> -->
+                <button type="submit">Submit</button>
+            </form></center>
+            {% else %}
+                <center><h1>Please wait for teacher to start the server</h1></center>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</body>
+{% endblock body %}

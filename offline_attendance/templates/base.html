@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style>
+      .card {
+        margin-top: 2% 2% 2% 2%;
+        min-width: 30%;
+        padding: 2%;
+      }
+    </style>
+    {% block head %} {% endblock head %}
+    <title>Attendance</title>
+  </head>
+  <header class="p-3 bg-dark text-white">
+    <div class="container-fluid">
+      <div
+        class="
+          d-flex
+          flex-wrap
+          align-items-center
+          justify-content-center justify-content-lg-start
+        "
+      >
+        <ul
+          class="
+            nav
+            col-12 col-lg-auto
+            me-lg-auto
+            mb-2
+            justify-content-center
+            mb-md-0
+          "
+        >
+          <li><a href="/index" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
+          <li>
+            <a href="/contact" class="nav-link px-2 text-white">Contact Us</a>
+          </li>
+          <li class="nav-link px-2 text-white">Stuck Anywhere? Goto Home</li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome {{request.user}}</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/logout">Logout</a>
+            <a class="dropdown-item" href="{% url 'user_profile' user %}">Dashboard</a>
+          </div>
+        </div>
+        {% else %}
+        <div class="text-end">
+          <button type="button" onclick="location.href='/login'" class="btn btn-outline-light me-2">Login</button>
+          <button type="button" onclick="location.href='/signup'" class="btn btn-warning">Sign-up</button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong>{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+  {% block body %} {% endblock body%}
+</html>

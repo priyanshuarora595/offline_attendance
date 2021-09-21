@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+{% if request.session.count == 1 %}
+<center><h1>Thank you ! Your attendance has been marked . Have a nice day ahead.</h1></center>
+
+{% else %}
+<center><h1>Got Some Error. Go back and  Try again!!</h1></center>
+{% endif %}
+{% endblock body %}
