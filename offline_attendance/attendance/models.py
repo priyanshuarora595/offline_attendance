@@ -2,6 +2,8 @@ from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.db import models
 
 
 # Create your models here.
@@ -34,7 +36,11 @@ class StudentData(models.Model):
     
     
 class TeacherData(models.Model):
-    username = models.CharField(max_length=50,primary_key=True)
+    username = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        db_column="staff"
+    )
     fullname = models.CharField(max_length=100)
     contact_number = models.CharField(max_length=10,null=True)
     email_id = models.EmailField(max_length=100)
