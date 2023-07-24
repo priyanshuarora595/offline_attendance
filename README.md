@@ -1,39 +1,39 @@
 # offline_attendance
 a simplified attendance marking system made for college premises which focuses on reducing proxies and false markings.
 
-![user landing page](/Screenshot%20(62).png)
+![user landing page](/screenshots/1.png)
 
 <br>
 
-![user login page](/Screenshot%20(63).png)
+![user login page](/screenshots/2.png)
 
 <br>
 
-![student signup page](/Screenshot%20(64).png)
+![student signup page](/screenshots/3.png)
 
 <br>
 
-![staff login](/Screenshot%20(65).png)
+![staff login](/screenshots/4.png)
 <br>
 
-![student landing page](/Screenshot%20(66).png)
-
-<br>
-
-![staff main page](/Screenshot%20(67).png)
+![student landing page](/screenshots/5.png)
 
 <br>
 
-
-![otp entry page](/Screenshot%20(68).png)
-
-<br>
-
-![acknowledgement page](/Screenshot%20(69).png)
+![staff main page](/screenshots/6.png)
 
 <br>
 
 
-![staff download page](/Screenshot%20(70).png)
+![otp entry page](/screenshots/7.png)
+
+<br>
+
+![acknowledgement page](/screenshots/8.png)
+
+<br>
+
+
+![staff download page](/screenshots/9.png)
 
 <br>
